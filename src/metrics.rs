@@ -42,3 +42,9 @@ impl fmt::Display for Metrics {
         Ok(())
     }
 }
+
+impl Default for Metrics {
+    fn default() -> Self {
+        Self::new()
+    }
+}

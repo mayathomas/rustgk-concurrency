@@ -1,6 +1,5 @@
-
+use anyhow::{anyhow, Result};
 use std::ops::{Add, AddAssign, Deref, Mul};
-use anyhow::{Result, anyhow};
 
 pub struct Vector<T> {
     data: Vec<T>,
@@ -38,8 +37,6 @@ impl<T> Deref for Vector<T> {
 //         &self.data[index]
 //     }
 // }
-
-
 
 pub fn dot_product<T>(a: Vector<T>, b: Vector<T>) -> Result<T>
 where
