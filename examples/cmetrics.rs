@@ -2,13 +2,13 @@ use std::{thread, time::Duration};
 
 use anyhow::Result;
 use rand::Rng;
-use rustgk_concurrency::Metrics;
+use rustgk_concurrency::CmapMetrics;
 
 const N: usize = 2;
 const M: usize = 4;
 
 fn main() -> Result<()> {
-    let metrics = Metrics::new();
+    let metrics = CmapMetrics::new();
 
     println!("{}", metrics);
 
@@ -26,7 +26,7 @@ fn main() -> Result<()> {
     }
 }
 
-fn task_worker(idx: usize, metrics: Metrics) -> Result<()> {
+fn task_worker(idx: usize, metrics: CmapMetrics) -> Result<()> {
     thread::spawn(move || {
         loop {
             //do something...
@@ -41,7 +41,7 @@ fn task_worker(idx: usize, metrics: Metrics) -> Result<()> {
     Ok(())
 }
 
-fn request_worker(metrics: Metrics) -> Result<()> {
+fn request_worker(metrics: CmapMetrics) -> Result<()> {
     thread::spawn(move || {
         loop {
             //do something...
