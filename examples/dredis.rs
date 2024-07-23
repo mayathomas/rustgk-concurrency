@@ -37,7 +37,7 @@ async fn process_redis_conn(mut stream: tokio::net::TcpStream, raddr: SocketAddr
                 info!("read {} bytes", n);
                 let line = String::from_utf8_lossy(&buf);
                 info!("{:?}", line);
-                stream.write(b"+Ok\r\n").await?;
+                let _ = stream.write(b"+Ok\r\n").await?;
             }
             Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => {
                 continue;
